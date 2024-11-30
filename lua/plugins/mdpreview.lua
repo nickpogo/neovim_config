@@ -3,9 +3,10 @@ return {
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
+		ft = { "markdown", "quarto" },
 		build = function()
 			vim.fn["mkdp#util#install"]()
+      vim.g.mkdp_filetypes = { "markdown", "quarto" }
 		end,
 	},
 
@@ -15,10 +16,10 @@ return {
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && yarn install",
 		init = function()
-			vim.g.mkdp_filetypes = { "markdown" }
+			vim.g.mkdp_filetypes = { "markdown", "quarto" }
 			vim.g.mkdp_theme = "dark"
 		end,
-		ft = { "markdown" },
+		ft = { "markdown", "quarto" },
 	},
 	{
 		"andrewferrier/wrapping.nvim",

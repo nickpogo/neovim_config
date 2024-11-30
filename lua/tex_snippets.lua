@@ -63,7 +63,7 @@ local greek = {
 		t("\\theta"),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 	s("`Q", {
-		t("\\theta"),
+		t("\\Theta"),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 	s("`i", {
 		t("\\iota"),
@@ -86,8 +86,14 @@ local greek = {
 	s("`x", {
 		t("\\xi"),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
+	s("`X", {
+		t("\\Xi"),
+	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 	s("`p", {
 		t("\\pi"),
+	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
+	s("`P", {
+		t("\\Pi"),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 	s("`r", {
 		t("\\rho"),
@@ -106,6 +112,9 @@ local greek = {
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 	s("`f", {
 		t("\\phi"),
+	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
+	s("`F", {
+		t("\\Phi"),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 	s("`vf", {
 		t("\\varphi"),
@@ -390,6 +399,16 @@ local fonts = {
 			return ts.in_mathzone() and ts.no_backslash(line_to_cursor)
 		end,
 	}),
+	s("rm", {
+		t("\\mathrm{"),
+		i(1),
+		t("}"),
+		i(0),
+	}, {
+		condition = function(line_to_cursor, matched_trigger, captures)
+			return ts.in_mathzone() and ts.no_backslash(line_to_cursor)
+		end,
+	}),
 	s("hat", {
 		t("\\hat{"),
 		i(1),
@@ -433,7 +452,7 @@ local fonts = {
 }
 
 local parenthesis = {
-	s("`(", {
+	s("((", {
 		t("\\left("),
 		i(1),
 		t("\\right)"),
@@ -451,22 +470,22 @@ local parenthesis = {
 		t("\\right\\}"),
 		i(0),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
-	s("`<", {
+	s("<<", {
 		t("\\left<"),
 		i(1),
 		t("\\right>"),
 		i(0),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 	s("||", {
-		t("\\left\\|"),
-		i(1),
-		t("\\right\\|"),
-		i(0),
-	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
-	s("`|", {
 		t("\\left|"),
 		i(1),
 		t("\\right|"),
+		i(0),
+	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
+	s("`|", {
+		t("\\left\\|"),
+		i(1),
+		t("\\right\\|"),
 		i(0),
 	}, { condition = ts.in_mathzone, show_condition = ts.in_mathzone }),
 }
