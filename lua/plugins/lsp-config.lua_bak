@@ -37,11 +37,12 @@ return {
 			})
 
 			-- Mappings.
-			local opts = { buffer = bufnr, noremap = true, silent = true }
+			local opts_ca = { buffer = bufnr, noremap = true, silent = true, desc = "Code Actions" }
+			local opts_cp = { buffer = bufnr, noremap = true, silent = true, desc = "Prettify" }
 			-- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
 			-- vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-			vim.keymap.set("n", "<leader>cp", vim.lsp.buf.format, opts) -- prettify
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts_ca)
+			vim.keymap.set("n", "<leader>cp", vim.lsp.buf.format, opts_cp) -- prettify
 		end,
 	},
 }
